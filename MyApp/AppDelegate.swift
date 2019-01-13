@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Umbrella
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

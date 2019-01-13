@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3D8E9F9963850651439D3660 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBDFB487A91D4F6F9DB2A2B /* Pods_Umbrella.framework */; };
+		4B76D2C221EB2D3D00C03DCD /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76D2C121EB2D3D00C03DCD /* export.swift */; };
 		4B96E28621EB1CB6000269C0 /* Umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B96E28421EB1CB6000269C0 /* Umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		40F09A84B60947E0C87B7A22 /* Pods-Umbrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.debug.xcconfig"; path = "Target Support Files/Pods-Umbrella/Pods-Umbrella.debug.xcconfig"; sourceTree = "<group>"; };
 		49C33383E910B33825A38D28 /* Pods-Umbrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.release.xcconfig"; path = "Target Support Files/Pods-Umbrella/Pods-Umbrella.release.xcconfig"; sourceTree = "<group>"; };
+		4B76D2C121EB2D3D00C03DCD /* export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
 		4B96E28121EB1CB6000269C0 /* Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B96E28421EB1CB6000269C0 /* Umbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Umbrella.h; sourceTree = "<group>"; };
 		4B96E28521EB1CB6000269C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				4B96E28421EB1CB6000269C0 /* Umbrella.h */,
 				4B96E28521EB1CB6000269C0 /* Info.plist */,
+				4B76D2C121EB2D3D00C03DCD /* export.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 				TargetAttributes = {
 					4B96E28021EB1CB6000269C0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -181,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B76D2C221EB2D3D00C03DCD /* export.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +318,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40F09A84B60947E0C87B7A22 /* Pods-Umbrella.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -326,9 +332,15 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.muukii.Umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -338,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49C33383E910B33825A38D28 /* Pods-Umbrella.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -350,6 +363,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.muukii.Umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
